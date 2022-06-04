@@ -11,29 +11,27 @@
 </h:head>
 
 <h:body>
-	<h1>Cadastro de Funcionário</h1>
+	<h1>Informações de Cadastro</h1>
+
 	<h:form>
 		<h:panelGrid columns="2">
-			Nome <h:inputText/>
-			Senha <h:inputSecret/>
-			Sexo 
-			<h:selectOneMenu>
-				<f:selectItem itemLabel="Masculino" itemValue="M" />
-				<f:selectItem itemLabel="Feminino" itemValue="F" />
-			</h:selectOneMenu>
-			
-			Status
-			<h:selectOneRadio>
-				<f:selectItem itemLabel="Ativo" itemValue="A" />
-				<f:selectItem itemLabel="Inativo" itemValue="I" />
-			</h:selectOneRadio>
-			
-			Observações
-			<h:inputTextarea rows="3" cols="20"/>
-			
-			<h:commandButton value="Cadastrar" />
+			<h:outputText value="Nome" />
+			<h:inputText value="#{bean.pessoa.nome}" />
+
+			<h:outputText value="E-mail" />
+			<h:inputText value="#{bean.pessoa.email}" />
+
+			<h:outputText />
+			<h:commandButton action="#{bean.adicionar}" value="Adicionar" />
 		</h:panelGrid>
 	</h:form>
+
+	<h1>Lista de Pessoas</h1>
+
+	<h:dataTable value="#{bean.pessoas}" var="p" border="1">
+		<h:column headerText="Nome">#{p.nome}</h:column>
+		<h:column headerText="E-mail">#{p.email}</h:column>
+	</h:dataTable>
 
 </h:body>
 </html>
